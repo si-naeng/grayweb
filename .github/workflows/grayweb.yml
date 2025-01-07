@@ -31,12 +31,12 @@ jobs:								# 작업 지정
         uses: docker/login-action@v2				# 사용할 동작
         with:							# 동작에 사용할 input 값 사용 선언
           username: ${{ secrets.DOCKER_HUB_USERNAME }}		# docker hub에 사용할 사용자 ID secret
-          password: ${{ secrets.DOCKER_HUB_PASSWORD }}		# docker hub에 사용할 사용자 암호 secret
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}		
 
       - name: Build and push Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
-          push: true						# 빌드 후 배포 여부 확인
-          tags: ${{ steps.docker_meta.outputs.tags }}		# 빌드 시 위에서 지정한 태그 사용 지정
-          labels: ${{ steps.docker_meta.outputs.labels }}	# 빌드 시 위에서 지정한 라벨 사용 지정
+          push: true						
+          tags: ${{ steps.docker_meta.outputs.tags }}		
+          labels: ${{ steps.docker_meta.outputs.labels }}	
